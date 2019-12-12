@@ -4,12 +4,14 @@ import { RouterModule } from'@angular/router';
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { DetailsComponent } from './details/details.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    DetailsComponent
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,11 +21,12 @@ import { DetailsComponent } from './details/details.component';
         component:UsersComponent
       },
       {
-        path:'userInfo/:name',
+        path:'userInfo/:_id',
         component: DetailsComponent}
-    ])
+    ]),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

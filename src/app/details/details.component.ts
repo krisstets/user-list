@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
-import { USERS } from '../mock-users';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 
 @Component({
@@ -10,20 +10,22 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  public users = USERS;
+
   public user: User;
 
+  constructor(private activeRouter: ActivatedRoute, private router: Router, private httpService:UserService) { }
 
-  constructor(private activeRouter: ActivatedRoute, private router: Router) { }
-
-  public ngOnInit():void {
-    console.log(this.activeRouter);
-    const name = this.activeRouter.snapshot.params.name;
-    this.user = this.users.filter(user => user.name === name)[0];
-  }
+  public ngOnInit() {
+    const id = this.activeRouter.snapshot.params._id;
+    this.httpService.getUsersId(id).subscribe(data => {
+    this.user = data[0];
+    });
+}
 
   public goBack():void {
     this.router.navigate(['']);
   }
+
+
 }
 

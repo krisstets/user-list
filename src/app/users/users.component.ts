@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { USERS } from '../mock-users';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
 
-  public users = USERS;
+  public users : User[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private httpService: UserService) { }
 
-  public onSelect(name: string): void{
-     this.router.navigate(['userInfo', name]);
+  ngOnInit() {
+    return this.httpService.getUsers().subscribe(data=> this.users = data)
+  }
+
+  public onSelect(_id: string): void{
+     this.router.navigate(['userInfo', _id]);
   }
 }
