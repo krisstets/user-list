@@ -1,0 +1,18 @@
+mat-card {
+  margin-bottom: 10px;
+  width: 250px;
+  background-color: grey;
+}
+mat-card:hover{
+  transform: scale(1.1);
+}
+li{
+  list-style: none;
+}
+button{
+  margin-left: 10px;
+  margin-top: 10px;
+  position: relative;
+  left: 300px;
+  bottom: 60px;
+}

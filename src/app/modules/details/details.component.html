@@ -1,0 +1,10 @@
+  <mat-card-title> About {{user?.name}}</mat-card-title>
+  <mat-card-content>
+  <div><span>surname: </span>{{user?.surname}}</div>
+  <div><span>login: </span>{{user?.login}}</div>
+  <div><span>password: </span>{{user?.password}}</div>
+</mat-card-content>
+
+<button mat-raised-button color="grey" (click)="goBack()">Back</button>
+<button mat-raised-button color="accent" (click)="onEdit(user?._id)">Edit</button>
+<app-edit-modal-window [user]="user" *ngIf="isUserEditWindowVisible" (cancel)="handleCancel()" (save)="handleSave()" ></app-edit-modal-window>

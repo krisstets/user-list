@@ -1,0 +1,14 @@
+<ul class="users">
+  <li *ngFor="let user of users "
+   (click)="onSelect(user._id)">
+  <mat-card>
+    <mat-card-title class="badge"> {{user.name | uppercase}}</mat-card-title>
+  </mat-card>
+   <button mat-raised-button color="warn" (click)="onDelete($event,user._id)">Delete</button>
+</li>
+</ul>
+<app-delete-modal-window *ngIf="isDeleteWindowVisible"
+ (cancelDelete)="cancelDeleting()"
+ (confirmDelete)="confirmDeleting()">
+</app-delete-modal-window>
+

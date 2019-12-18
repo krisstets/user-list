@@ -1,0 +1,37 @@
+<div class="edit-page">
+  <div class="edit-container">
+      <h2 class="edit-container-title">Edit User</h2>
+      <form [formGroup]="editUserForm">
+        <div>
+          <label class="edit-name"></label>
+          <input class="edit-name-input" formControlName="name" type="text" placeholder="name">
+        </div>
+
+        <div>
+          <label class="edit-surname"></label>
+           <input class="edit-surname-input" formControlName="surname" type="text" placeholder="surname">
+        </div>
+
+        <div>
+          <label class="edit-login"></label>
+           <input class="edit-login-input" formControlName="login" type="text" placeholder="login">
+        </div>
+        <div>
+          <label class="edit-password"></label>
+           <input class="edit-password-input" formControlName="password" type="password" style="-webkit-text-security: square;" placeholder="password">
+        </div>
+      </form>
+      <div class="edit-buttons-container">
+          <button
+          mat-button color="grey"
+            (click)="handleSave()">
+            SAVE
+          </button>
+          <button
+          mat-button color="grey"
+            (click)="handleCancel()">
+            CANCEL
+          </button>
+      </div>
+  </div>
+</div>
