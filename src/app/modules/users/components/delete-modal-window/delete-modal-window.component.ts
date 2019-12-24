@@ -1,7 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
-
-
 @Component({
   selector: 'app-delete-modal-window',
   templateUrl: './delete-modal-window.component.html',

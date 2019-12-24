@@ -5,10 +5,16 @@
     <mat-card-title class="badge"> {{user.name | uppercase}}</mat-card-title>
   </mat-card>
    <button mat-raised-button color="warn" (click)="onDelete($event,user._id)">Delete</button>
+
 </li>
 </ul>
+<button mat-raised-button color="warn" (click)="onCreate()">Create</button>
 <app-delete-modal-window *ngIf="isDeleteWindowVisible"
  (cancelDelete)="cancelDeleting()"
  (confirmDelete)="confirmDeleting()">
 </app-delete-modal-window>
+<app-create-modal-window *ngIf="isEditWindowVisible"
+(cancelCreate)="cancelCreating()"
+(confirmCreate)="confirmCreating()">
+</app-create-modal-window>
 

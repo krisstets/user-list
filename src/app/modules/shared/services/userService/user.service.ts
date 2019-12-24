@@ -28,4 +28,8 @@ export class UserService {
     return this.http.put<IUser>(`${this.URL}/api/members/${_id}`, newInfo);
   }
 
+  public createUser(newUser: IUser[]) {
+    return this.http.post<IUser>(`${this.URL}/api/members`, newUser);
+  }
+
 }

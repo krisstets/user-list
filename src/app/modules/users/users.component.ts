@@ -14,7 +14,9 @@ export class UsersComponent implements OnInit {
 
   public users : IUser[] = [];
   public isDeleteWindowVisible = false;
+  public isEditWindowVisible = false;
   public deletingID: string;
+
 
   constructor(private router: Router, private userService: UserService) { }
 
@@ -27,11 +29,9 @@ export class UsersComponent implements OnInit {
   }
 
   public onDelete($event, _id: string): void{
-
     this.deletingID = _id
     this.isDeleteWindowVisible = true;
     $event.stopPropagation();
-
   }
 
   public cancelDeleting(): void {
@@ -42,5 +42,19 @@ export class UsersComponent implements OnInit {
     this.isDeleteWindowVisible = false;
     this.userService.getUsers().subscribe(data=> this.users = data);
     this.userService.deleteUserByID(this.deletingID).subscribe(res => {console.log(res)})
+  }
+
+  public onCreate():void {
+    this.isEditWindowVisible= true;
+
+  }
+
+  public cancelCreating(): void {
+    this.isEditWindowVisible = false;
+  }
+
+  public confirmCreating():void {
+    this.isEditWindowVisible = false;
+    this.userService.createUser(this.users).subscribe(res => {console.log(res)})
   }
 }
