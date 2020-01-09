@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IUser } from '../../interfaces/IUser';
+import { IUser, IAccessRefreshTokens, IToken } from '../../interfaces/IUser';
+
 
 
 @Injectable({
@@ -9,6 +10,8 @@ import { IUser } from '../../interfaces/IUser';
 })
 export class UserService {
   private URL = 'http://localhost:5000';
+  public token = '';
+
   constructor(private http: HttpClient) { }
 
 
@@ -32,4 +35,17 @@ export class UserService {
     return this.http.post<IUser>(`${this.URL}/api/members`, newUser);
   }
 
+  public login(userInfo: IUser): Observable<any> {
+    return this.http.post<any>(`${this.URL}/api/members/login`, userInfo);
+  }
+
+  public getToken(): IToken {
+    return JSON.parse(localStorage.getItem('token'));
+  }
+
+  public logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('login');
+
+  }
 }

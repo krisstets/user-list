@@ -1,0 +1,22 @@
+<div class="login-page">
+  <div class="login-container">
+      <h2 class="login-container-title">LOGIN </h2>
+      <form [formGroup]="loginUserForm">
+        <div>
+          <label class="login"></label>
+           <input class="login-input" formControlName="login" type="text" placeholder="login">
+        </div>
+        <div>
+          <label class="password"></label>
+           <input class="password-input" formControlName="password" type="password" style="-webkit-text-security: square;" placeholder="password">
+        </div>
+      </form>
+      <div class="button-container">
+          <button
+            (click)="submit()"
+            mat-button color="grey">
+            SAVE
+          </button>
+      </div>
+  </div>
+</div>

@@ -12,10 +12,12 @@ export class UsersComponent implements OnInit {
 
 
 
-  public users : IUser[] = [];
+  public users : IUser[];
   public isDeleteWindowVisible = false;
   public isEditWindowVisible = false;
   public deletingID: string;
+  resp;
+
 
 
   constructor(private router: Router, private userService: UserService) { }
@@ -55,6 +57,11 @@ export class UsersComponent implements OnInit {
 
   public confirmCreating():void {
     this.isEditWindowVisible = false;
-    this.userService.createUser(this.users).subscribe(res => {console.log(res)})
+    this.userService.createUser(this.users).subscribe(response => {
+      this.resp = response;
+      if (this.resp.user) {
+        this.users.push(this.resp.user);
+      }
+    });
   }
 }

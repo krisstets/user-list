@@ -8,26 +8,36 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './modules/shared/shared.module';
 import { UsersModule } from './modules/users/users.module';
 import { DetailsModule } from './modules/details/details.module';
+import { LoginPageComponent } from './modules/login-page/login-page.component';
+import { LoginPageModule } from './modules/login-page/login-page.module';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       {
-        path:'',
+        path:'users',
         component:UsersComponent
       },
       {
         path:'userInfo/:_id',
-        component: DetailsComponent}
+        component: DetailsComponent
+      },
+      {
+        path:'',
+        component: LoginPageComponent
+      }
     ]),
     HttpClientModule,
     SharedModule,
     UsersModule,
-    DetailsModule
+    DetailsModule,
+    LoginPageModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

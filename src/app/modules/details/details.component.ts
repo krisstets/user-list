@@ -23,7 +23,7 @@ export class DetailsComponent implements OnInit {
 }
 
   public goBack():void {
-    this.router.navigate(['']);
+    this.router.navigate(['/users']);
   }
 
   public onEdit(_id:string) {
